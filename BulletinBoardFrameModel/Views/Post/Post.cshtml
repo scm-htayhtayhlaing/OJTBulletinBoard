@@ -1,0 +1,63 @@
+﻿@model IEnumerable<BulletinBoardFrameModel.ViewModel.post.PostViewModel>
+
+@{
+  ViewBag.Title = "View";
+  Layout = "~/Views/Common/_Layout.cshtml";
+}
+<h2>View</h2>
+<p>
+  @Html.ActionLink("Create New", "Create")
+</p>
+@section usage{
+  <link href="~/Resources/css/post/list.css" rel="stylesheet" />
+}
+@section script{
+  <script src="~/Resources/js/post/list.js"></script>
+}
+@using (Html.BeginForm())
+{
+  <div class="col-lg-10">
+    <input type="text" name="search" />&nbsp;&nbsp;
+    <input type="submit" value="Search" class="btn btn-primary" ) />&nbsp;&nbsp;
+  </div>
+
+  <table class="table">
+    <tr>
+      <th>
+        @Html.DisplayNameFor(model => model.title)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.description)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.name)
+      </th>
+      <th>
+        @Html.DisplayNameFor(model => model.created_at)
+      </th>
+      <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+      <tr>
+        <td>
+          @Html.DisplayFor(modelItem => item.title)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.description)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+          @Html.DisplayFor(modelItem => item.created_at)
+        </td>
+        <td>
+          @Html.ActionLink("Edit", "Edit") |
+          @Html.ActionLink("Details", "Details") |
+          @Html.ActionLink("Delete", "Delete")
+        </td>
+      </tr>
+    }
+  </table>
+}
